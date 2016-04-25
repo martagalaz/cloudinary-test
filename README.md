@@ -1,7 +1,3 @@
-romain.ensminger@dropncast.com //paypal
-romain.ensminger@gmail.com
-108 + 108 //yes envoie moi un mail sur la deuxieme adresse
-//
 Create an account at [Cloudinary](https://cloudinary.com). Find your:
 
 * Cloud name
