@@ -1,4 +1,3 @@
-Thank you Dan Michaelson and Guillaume Boucher for your help with coding
 
 Create an account at [Cloudinary](https://cloudinary.com). Find your:
 
