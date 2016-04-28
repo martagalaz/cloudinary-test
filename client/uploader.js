@@ -1,4 +1,4 @@
-Template.uploader.events({
+Template.uploader.events({  
 	"change #fileSelected": function(e){
 		if(!e.target.files || e.target.files.length === 0){
 			$("#chooseVoicemail").text('Choose a voicemail');
@@ -9,18 +9,22 @@ Template.uploader.events({
 		fileName = (fileName.length > 16 ? fileName.slice(0,16) + '...' : fileName);
 		
 		$("#chooseVoicemail").text(fileName);
+    $("#fileTitle").click(function(){
+      $(this).attr("placeholder","__________");
+    });
 	},
 	"submit": function(e) {
 		e.preventDefault();
 		var fileName = e.target.fileTitle.value;
 		var files = e.target.fileSelected.files;
+    var shuffledFileName = _.shuffle(fileName).join("");
 		Cloudinary.upload(files, { resource_type: "video" }, function(err, res) {
 			if(err){
 				return console.error(err);
 			}
 			
 			res.from = e.target.fileTitle.value;
-			res.title = Math.floor(Math.random() * 10000000000); //random number.
+			res.title = shuffledFileName;
 			res.visible = true;
 			res.fileName = fileName;
 			
@@ -32,6 +36,7 @@ Template.uploader.events({
     		res.posY = Math.random() / 1.4;
 
 			$('#chooseVoicemail').text("Choose a voicemail");
+      $('#fileTitle').attr("placeholder","Narrated by");
 			
 			Images.insert(res,function(err,createdId){
 				console.log('created image',err,createdId);
@@ -59,4 +64,3 @@ Meteor.call('getCounts', function(err, count) {
 	var randomInt = Math.floor(Math.random() * (count +1));
 	Session.set('randIndex', randomInt);	
 });
-
