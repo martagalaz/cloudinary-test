@@ -20,7 +20,7 @@ Template.images.helpers({
 			attributes.class += ' active';
 		}
 		
-		var diameter = image.duration * 13;
+		var diameter = image.duration * 15;
 		if (diameter < 70) {
 			diameter = 100;
 		}
